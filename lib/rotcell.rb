@@ -10,13 +10,23 @@ class RotCell
    end
 
    def rotate(char)
-      rot_chars = []
-      if char == 'a'
-         rot_chars << 'b'
-         rot_chars << 'g'
-         rot_chars << 'f'
+      around_characters(char)
+   end
+
+   private
+   def around_characters(char)
+      around_characters = []
+
+      find_position = @cells.index(char)
+
+      [-8, -7, -6, -1, 1, 6, 7, 8].each do |i|
+         position_char = @cells[find_position + i]
+
+         if position_char != 'z'
+            around_characters << position_char
+         end
       end
 
-      rot_chars.sort
+      around_characters.sort
    end
 end

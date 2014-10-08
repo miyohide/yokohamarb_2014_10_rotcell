@@ -12,4 +12,15 @@ describe RotCell do
       end
    end
 
+   describe "rotate 'b'" do
+      it "return ['a', 'c', 'f', 'g', 'h']" do
+         @rot_cell.rotate('b').must_equal %w(a c f g h)
+      end
+   end
+
+   describe "rotate 'm'" do
+      it "return ['g', 'h', 'i', 'l', 'n', 'q', 'r', 's']" do
+         @rot_cell.rotate('m').must_equal %w(g h i l n q r s)
+      end
+   end
 end
