@@ -21,6 +21,13 @@ describe RotCell do
    describe "rotate 'm'" do
       it "return ['g', 'h', 'i', 'l', 'n', 'q', 'r', 's']" do
          @rot_cell.rotate('m').must_equal %w(g h i l n q r s)
+         @rot_cell.cells.must_equal %w(z z z z z z z
+                                       z a b c d e z
+                                       z f l g h j z
+                                       z k q m i o z
+                                       z p r s n t z
+                                       z u v w x y z
+                                       z z z z z z z)
       end
    end
 end
