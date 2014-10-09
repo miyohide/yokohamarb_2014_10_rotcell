@@ -1,6 +1,10 @@
 class RotCell
    attr_reader :cells
 
+   CLOCK_WISE = [{from: -1, to: -8}, {from:  6, to: -1}, {from:  7, to: 6},
+                 {from:  8, to:  7}, {from:  1, to:  8}, {from: -6, to: 1},
+                 {from: -7, to: -6}, {from: -8, to: -7}]
+
    def initialize
       @cells = %w(z z z z z z z
                   z a b c d e z
@@ -37,14 +41,11 @@ class RotCell
    def update_cells(char)
       find_position = @cells.index(char)
 
-      tmp = @cells[find_position - 8]
-      @cells[find_position - 8] = @cells[find_position - 1]
-      @cells[find_position - 1] = @cells[find_position + 6]
-      @cells[find_position + 6] = @cells[find_position + 7]
-      @cells[find_position + 7] = @cells[find_position + 8]
-      @cells[find_position + 8] = @cells[find_position + 1]
-      @cells[find_position + 1] = @cells[find_position - 6]
-      @cells[find_position - 6] = @cells[find_position - 7]
-      @cells[find_position - 7] = tmp
+      tmp = ''
+      CLOCK_WISE.each do |cw|
+         tmp = @cells[find_position + cw[:to]] if tmp == ''
+         @cells[find_position + cw[:to]] = @cells[find_position + cw[:from]]
+      end
+      @cells[find_position + CLOCK_WISE.last[:to]] = tmp
    end
 end
