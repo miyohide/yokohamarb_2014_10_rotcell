@@ -63,7 +63,7 @@ class RotCell
 
    def edge?(position)
       case position
-      when 0..7,13,14,20,21,27,28,34,35,41,42,48,43..47
+      when 0..7,13,14,20,21,27,28,34,35,41..48
          true
       else
          false
