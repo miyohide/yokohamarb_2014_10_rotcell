@@ -23,6 +23,23 @@ describe RotCell do
       end
    end
 
+   describe "rotate 'A'" do
+      it "return ['b', 'f', 'g']" do
+         @rot_cell.rotate('A').must_equal %w(b f g)
+      end
+
+      it "rot cell valid" do
+         @rot_cell.rotate('A')
+         @rot_cell.cells.must_equal %w(z z z z z z z
+                                       z a g c d e z
+                                       z b f h i j z
+                                       z k l m n o z
+                                       z p q r s t z
+                                       z u v w x y z
+                                       z z z z z z z)
+      end
+   end
+
    describe "rotate 'b'" do
       it "return ['a', 'c', 'f', 'g', 'h']" do
          @rot_cell.rotate('b').must_equal %w(a c f g h)
