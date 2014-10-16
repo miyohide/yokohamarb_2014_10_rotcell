@@ -73,4 +73,21 @@ describe RotCell do
                                        z z z z z z z)
       end
    end
+
+   describe "rotate 'YokoHamarb'" do
+      it "return ['a', 'c', 'd', 'f', 'p']" do
+         @rot_cell.rotate('YokoHamarb').must_equal %w(a c d f p)
+      end
+
+      it "rot cell valid" do
+         @rot_cell.rotate('YokoHamarb')
+         @rot_cell.cells.must_equal %w(z z z z z z z
+                                       z c b a t e z
+                                       z f p d g x z
+                                       z k l r h n z
+                                       z q j i m o z
+                                       z u v w s y z
+                                       z z z z z z z)
+      end
+   end
 end
